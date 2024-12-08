@@ -7,7 +7,7 @@ def hello_world():
     """
     A simple route that returns a welcome message.
     """
-    name = request.args.get('name', 'World')
+    name = request.args.get('name', 'Asif')
     return jsonify({"message": f"Hello, {name}!"})
 
 if __name__ == '__main__':
