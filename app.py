@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-@app.route('/', method=['GET'])
+@app.route('/', methods=['GET'])
 def health_check():
     """
     A simple function to responsd the health check request
