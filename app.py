@@ -2,6 +2,17 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+@app.route('/', method=['GET'])
+def health_check():
+    """
+    A simple function to responsd the health check request
+    """
+    return jsonify(
+        {
+            "Health": "The app is healthy"
+        }
+    )
+
 @app.route('/hello', methods=['GET'])
 def hello_world():
     """
