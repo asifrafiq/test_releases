@@ -1,0 +1,2 @@
+name: learning github actions
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
