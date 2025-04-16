@@ -1,27 +1,17 @@
-name: learning github actions
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+name: Manual Trigger Example
 
-on: 
+on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
 
 jobs:
-  test:
-    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node_version: ['18.x', '20.x']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node_version }}
+      - name: Print Environment
+        run: echo "Deploying to ${{ github.event.inputs.environment }}"
 
-    - name: npm install, build and test
-      run: |
-        npm install
-        npm run build --if-present
-        npm test
